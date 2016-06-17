@@ -46,7 +46,7 @@
                         <h:outputText value="Opusc tutaj typy kosztow obejmujacych etat i umowe o dzielo" rendered="#{empty parsujArkusz.etatIdzielo}" />
                         <p:dataTable id="etatIdzieloTable" var="typKosztu" value="#{parsujArkusz.etatIdzielo}" rendered="#{not empty parsujArkusz.etatIdzielo}">
                             <p:column headerText="Nazwa typu z RFP">
-                                <h:outputText id="etatIdzieloColumn" value="#{typKosztu.nazwa}" style="font-size:12px;" title="#{typKosztu.ktoPrzypisany}"/>
+                                <h:outputText id="etatIdzieloColumn" value="#{typKosztu.nazwa}"  style="font-size:12px;" title="#{typKosztu.ktoPrzypisany}"/>
                                 <p:draggable for="etatIdzieloColumn" revert="true" helper="clone"/>
                             </p:column>
                         </p:dataTable>
