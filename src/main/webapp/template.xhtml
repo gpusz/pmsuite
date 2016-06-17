@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<f:view
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:ui="http://java.sun.com/jsf/facelets">
+    <ui:insert name="preHead"/>
+    <h:head>
+        <ui:insert name="head" />
+        <script type="text/javascript">
+            function handleDrop(event, ui) {
+                var droppedCar = ui.draggable;
+
+                droppedCar.fadeOut('fast');
+            }
+        </script>
+    </h:head>
+    <h:body>
+        <h:form id="mainForm" onkeypress="if (event.keyCode == 13) {return false; }"  enctype="multipart/form-data">
+            <!--p:messages id="messages" globalOnly="true" showDetail="false" autoUpdate="true" closable="true" /-->
+            <p:layout id="mainLayout" fullPage="true">
+                <p:layoutUnit position="north">
+                    <p:tabMenu activeIndex="#{activeTab}">
+                        <!--p:menuitem value="Tablica" outcome="/start" icon="ui-icon-home"/-->
+                        <p:menuitem value="Parsuj arkusz CSV" outcome="/pmsuite/parsujArkuszCsv" />
+                        <!--p:menuitem value="Parsuj arkusz CSV" outcome="/pmsuite/test" /-->
+                        <!--p:menuitem  style="position: absolute; right: 60px;">
+                            <p:panel>
+                                <p:outputLabel value="Dzisiaj jest: "/>
+                                <p:outputLabel value="#{currentDate}">
+                                    <f:convertDateTime pattern="dd-MM-yyyy" type="date" />
+                                </p:outputLabel>
+                            </p:panel>
+                        </p:menuitem-->
+                    </p:tabMenu>
+                </p:layoutUnit>
+                <p:layoutUnit position="center">
+                    <ui:insert name="contents" />
+                </p:layoutUnit>
+            </p:layout>
+
+            <f:facet name="last">
+                <h:outputStylesheet name="css/default.css" />
+            </f:facet>
+        </h:form>
+    </h:body>
+
+</f:view>
