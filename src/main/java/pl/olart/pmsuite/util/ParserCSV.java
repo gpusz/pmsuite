@@ -1,5 +1,6 @@
 package pl.olart.pmsuite.util;
 
+import org.supercsv.cellprocessor.Optional;
 import org.supercsv.cellprocessor.ParseDate;
 import org.supercsv.cellprocessor.ParseDouble;
 import org.supercsv.cellprocessor.constraint.NotNull;
@@ -53,14 +54,14 @@ public class ParserCSV {
                 new ParseDate("yyyy-MM-dd"), // Data dostawy/wykonania
                 new NotNull(), // Typ elementu kosztu
                 new NotNull(), // Wygenerowany przez
-                new NotNull(), // Identyfikator zewnętrzny
+                new Optional(new NotNull()), // Identyfikator zewnętrzny
                 new NotNull(), // Fundusz
                 new NotNull(), // Konto analityczne
                 new NotNull(new ParseDouble()), // kwota netto
                 new NotNull(new ParseDouble()), // kwota vat
                 new NotNull(new ParseDouble()), // kwota brutto
-                new NotNull(), // Opis
-                new ParseDate("yyyy-MM-dd") // data zaplaty
+                new Optional(new NotNull()), // Opis
+                new Optional(new ParseDate("yyyy-MM-dd")) // data zaplaty
         };
 
         return processors;

@@ -9,6 +9,7 @@
 
         <p:panel>
             <p:growl id="messages" showDetail="true" />
+            <p:commandButton actionListener="#{parsujArkusz.clearActionListener}" value="Dd nowa" update="infoBtnPanel messages przydzielanieTypowKosztowPanel suma rok"/>
             <p:fileUpload label="Zaladuj plik"
                           mode="advanced"
                           dragDropSupport="true"
@@ -16,12 +17,14 @@
                           sizeLimit="1000000"
                           allowTypes="/(\.|\/)(csv|xls)$/" auto="true"
                           fileUploadListener="#{parsujArkusz.handleFileUpload}"
+                          style="background-color: #9acd32;"
                           >
                     <p:outputPanel id="infoBtnPanel">
-                        <h:outputText value="Przeciągnij tutaj plik" style="margin-top: 20px; margin-left: 20px; font-size: 14px;" rendered="#{parsujArkusz.nazwaPliku == null}"/>
-                        <h:outputText value="Zaladowano plik: #{parsujArkusz.nazwaPliku}" style="margin-top: 20px; margin-left: 20px; font-size: 14px;" rendered="#{parsujArkusz.nazwaPliku != null}"/>
+                        <h:outputText value="Przeciągnij tutaj plik" style="margin-top: 20px; margin-left: 20px; font-size: 16px;" rendered="#{parsujArkusz.nazwaPliku == null}"/>
+                        <h:outputText value="Zaladowano plik: #{parsujArkusz.nazwaPliku}" style="margin-top: 20px; margin-left: 20px; font-size: 16px; background-color: #9acd32;" rendered="#{parsujArkusz.nazwaPliku != null}"/>
                     </p:outputPanel>
              </p:fileUpload>
+
 
             <p:outputPanel id="przydzielanieTypowKosztowPanel">
                 <p:spacer height="20px;"/>
@@ -107,6 +110,22 @@
                     <p:ajax listener="#{parsujArkusz.onZewnetrzniFromEtatDrop}" update="dropAreaZewnetrzni dropAreaEtatIdzielo wynik" />
                 </p:droppable-->
 
+                <p:fieldset id="nieosobowe" legend="Nieosobowe" style="margin-top:20px" rendered="#{parsujArkusz.nazwaPliku != null}">
+                    <p:outputPanel id="dropAreaNieosobowe">
+                        <h:outputText value="Opusc tutaj typy kosztow nieosobowe" rendered="#{empty parsujArkusz.nieosobowe}" />
+                        <p:dataTable id="nieosoboweTable" var="typKosztu" value="#{parsujArkusz.nieosobowe}" rendered="#{not empty parsujArkusz.nieosobowe}">
+                            <p:column headerText="Nazwa typu z RFP">
+                                <h:outputText id="nieosoboweColumn" value="#{typKosztu.nazwa}" style="font-size:12px;" title="#{typKosztu.ktoPrzypisany}" />
+                                <p:draggable for="nieosoboweColumn" revert="true" helper="clone"/>
+                            </p:column>
+                        </p:dataTable>
+                    </p:outputPanel>
+                </p:fieldset>
+
+                <p:droppable for="nieosobowe" tolerance="touch" activeStyleClass="ui-state-highlight" datasource="typyKosztowDoPrzydzieleniaTable">
+                    <p:ajax listener="#{parsujArkusz.onNieosoboweDrop}" update="dropAreaNieosobowe typyKosztowDoPrzydzieleniaTable wynik suma rok" />
+                </p:droppable>
+
 
                 <p:dataTable id="wynik" var="wynik" value="#{parsujArkusz.wyniki}" rendered="#{parsujArkusz.nazwaPliku != null}" emptyMessage="Zmapuj wszystkie typy aby otrzymac wartosci.">
                     <p:column headerText="Koszty realizacyjne" width="31%">
@@ -114,7 +133,7 @@
                     </p:column>
                     <p:column headerText="01">
                         <h:outputText value="#{wynik.wynik1}" >
-                            <f:convertNumber type="number" minFractionDigits="2"/>
+                            <f:convertNumber type="number" minFractionDigits="2" locale="pl_PL"/>
                         </h:outputText>
                     </p:column>
                     <p:column headerText="02">

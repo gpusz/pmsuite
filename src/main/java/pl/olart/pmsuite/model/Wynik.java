@@ -9,20 +9,20 @@ import java.io.Serializable;
  */
 public class Wynik implements Serializable {
     private String nazwa;
-    private Double wynik1 = null;
-    private Double wynik2 = null;
-    private Double wynik3 = null;
-    private Double wynik4 = null;
-    private Double wynik5 = null;
-    private Double wynik6 = null;
-    private Double wynik7 = null;
-    private Double wynik8 = null;
-    private Double wynik9 = null;
-    private Double wynik10 = null;
-    private Double wynik11 = null;
-    private Double wynik12 = null;
+    private Double wynik1 = 0d;
+    private Double wynik2 = 0d;
+    private Double wynik3 = 0d;
+    private Double wynik4 = 0d;
+    private Double wynik5 = 0d;
+    private Double wynik6 = 0d;
+    private Double wynik7 = 0d;
+    private Double wynik8 = 0d;
+    private Double wynik9 = 0d;
+    private Double wynik10 = 0d;
+    private Double wynik11 = 0d;
+    private Double wynik12 = 0d;
 
-    public Wynik(String nazwa, String rok) {
+    public Wynik(String nazwa) {
         this.nazwa = nazwa;
     }
 
@@ -128,5 +128,36 @@ public class Wynik implements Serializable {
 
     public void setWynik12(Double wynik12) {
         this.wynik12 = wynik12;
+    }
+
+    public void dodaj(Wynik skladnik) {
+        setWynik1(getWynik1() + skladnik.getWynik1());
+        setWynik2(getWynik2() + skladnik.getWynik2());
+        setWynik3(getWynik3() + skladnik.getWynik3());
+        setWynik4(getWynik4() + skladnik.getWynik4());
+        setWynik5(getWynik5() + skladnik.getWynik5());
+        setWynik6(getWynik6() + skladnik.getWynik6());
+        setWynik7(getWynik7() + skladnik.getWynik7());
+        setWynik8(getWynik8() + skladnik.getWynik8());
+        setWynik9(getWynik9() + skladnik.getWynik9());
+        setWynik10(getWynik10() + skladnik.getWynik10());
+        setWynik11(getWynik11() + skladnik.getWynik11());
+        setWynik12(getWynik12() + skladnik.getWynik12());
+    }
+
+    public void przyjmijWartosci(Wynik wartosc) {
+        setWynik1(wartosc.getWynik1());
+        setWynik2(wartosc.getWynik2());
+        setWynik3(wartosc.getWynik3());
+        setWynik4(wartosc.getWynik4());
+        setWynik5(wartosc.getWynik5());
+        setWynik6(wartosc.getWynik6());
+        setWynik7(wartosc.getWynik7());
+        setWynik8(wartosc.getWynik8());
+        setWynik9(wartosc.getWynik9());
+        setWynik10(wartosc.getWynik10());
+        setWynik11(wartosc.getWynik11());
+        setWynik12(wartosc.getWynik12());
+
     }
 }
