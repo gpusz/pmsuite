@@ -81,7 +81,7 @@ public class ParserCSV {
 
     public static ByteArrayInputStream ustawNaglowek(InputStreamReader isr) {
         try {
-            // input the file content to the String "input"
+            // input the file content to the String "input "
             BufferedReader file = new BufferedReader(isr);
             String line;String input = "";
 
