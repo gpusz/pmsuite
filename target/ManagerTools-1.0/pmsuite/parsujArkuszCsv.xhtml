@@ -1,0 +1,210 @@
+<ui:composition template="/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <ui:param name="activeTab" value="0"/>
+    <ui:define name="contents">
+
+        <p:panel>
+            <p:growl id="messages" showDetail="true" />
+            <p:commandButton actionListener="#{parsujArkusz.clearActionListener}" value="Dd nowa" update="infoBtnPanel messages przydzielanieTypowKosztowPanel suma rok"/>
+            <p:fileUpload label="Zaladuj plik"
+                          mode="advanced"
+                          dragDropSupport="true"
+                          update="infoBtnPanel messages przydzielanieTypowKosztowPanel suma rok"
+                          sizeLimit="1000000"
+                          allowTypes="/(\.|\/)(csv|xls)$/" auto="true"
+                          fileUploadListener="#{parsujArkusz.handleFileUpload}"
+                          style="background-color: #9acd32;"
+                          >
+                    <p:outputPanel id="infoBtnPanel">
+                        <h:outputText value="Przeciągnij tutaj plik" style="margin-top: 20px; margin-left: 20px; font-size: 16px;" rendered="#{parsujArkusz.nazwaPliku == null}"/>
+                        <h:outputText value="Zaladowano plik: #{parsujArkusz.nazwaPliku}" style="margin-top: 20px; margin-left: 20px; font-size: 16px; background-color: #9acd32;" rendered="#{parsujArkusz.nazwaPliku != null}"/>
+                    </p:outputPanel>
+             </p:fileUpload>
+
+
+            <p:outputPanel id="przydzielanieTypowKosztowPanel">
+                <p:spacer height="20px;"/>
+                <p:outputPanel>
+                    <h:outputText value="Zmapuj typy kosztow znalezione w pliku na typy z arkusza budzetowego przerzucajac nazwy typow w odpowiednie obszary. "  rendered="#{parsujArkusz.nazwaPliku != null}" style="font-size:18px;" />
+                    <h:outputText value="Aplikacja wstepnie wykonala przypisanie, ktore mozesz zmienic."  rendered="#{parsujArkusz.nazwaPliku != null}" style="font-size:18px;" />
+                </p:outputPanel>
+                <p:spacer height="20px;"/>
+
+                <p:fieldset id="typyKosztowDoPrzydzieleniaField" legend="Nie zmapowane typy kosztow z RFP" rendered="#{parsujArkusz.nazwaPliku != null}">
+                    <p:dataTable id="typyKosztowDoPrzydzieleniaTable" var="typKosztu" value="#{parsujArkusz.typyKosztow}" emptyMessage="Wszystkie typy zostaly zmapowane!">
+                        <p:column style="width:20px">
+                            <h:outputText id="typyKosztowColumn" value="#{typKosztu.nazwa}" style="font-size:12px;" title="#{typKosztu.ktoPrzypisany}"/>
+                            <p:draggable for="typyKosztowColumn" revert="true" helper="clone"/>
+                        </p:column>
+                    </p:dataTable>
+                </p:fieldset>
+
+
+                <p:fieldset id="etatIdzielo" legend="Etat i dzielo" style="margin-top:20px" rendered="#{parsujArkusz.nazwaPliku != null}">
+                    <p:outputPanel id="dropAreaEtatIdzielo">
+                        <h:outputText value="Opusc tutaj typy kosztow obejmujacych etat i umowe o dzielo" rendered="#{empty parsujArkusz.etatIdzielo}" />
+                        <p:dataTable id="etatIdzieloTable" var="typKosztu" value="#{parsujArkusz.etatIdzielo}" rendered="#{not empty parsujArkusz.etatIdzielo}">
+                            <p:column headerText="Nazwa typu z RFP">
+                                <h:outputText id="etatIdzieloColumn" value="#{typKosztu.nazwa}"  style="font-size:12px;" title="#{typKosztu.ktoPrzypisany}"/>
+                                <p:draggable for="etatIdzieloColumn" revert="true" helper="clone"/>
+                            </p:column>
+                        </p:dataTable>
+                    </p:outputPanel>
+                </p:fieldset>
+
+                <p:droppable for="etatIdzielo" tolerance="touch" activeStyleClass="ui-state-highlight" datasource="typyKosztowDoPrzydzieleniaTable">
+                    <p:ajax listener="#{parsujArkusz.onEtatDrop}" update="dropAreaEtatIdzielo typyKosztowDoPrzydzieleniaTable wynik suma rok" />
+                </p:droppable>
+                <!--p:droppable for="etatIdzielo" tolerance="touch" activeStyleClass="ui-state-highlight" datasource="kontraktowcyTable">
+                    <p:ajax listener="#{parsujArkusz.onEtatFromKontraktowcyDrop}" update="dropAreaEtatIdzielo dropAreaKontraktowcy wynik" />
+                </p:droppable>
+                <p:droppable for="etatIdzielo" tolerance="touch" activeStyleClass="ui-state-highlight" datasource="zewnetrzniTable">
+                    <p:ajax listener="#{parsujArkusz.onEtatFromZewnetrzniDrop}" update="dropAreaEtatIdzielo dropAreaZewnetrzni wynik" />
+                </p:droppable-->
+
+                <p:fieldset id="kontraktowcy" legend="Wspolpracownicy kontraktowi" style="margin-top:20px" rendered="#{parsujArkusz.nazwaPliku != null}">
+                    <p:outputPanel id="dropAreaKontraktowcy">
+                        <h:outputText value="Opusc tutaj typy kosztow obejmujacych kontraktowcow" rendered="#{empty parsujArkusz.kontraktowcy}" />
+                        <p:dataTable id="kontraktowcyTable" var="typKosztu" value="#{parsujArkusz.kontraktowcy}" rendered="#{not empty parsujArkusz.kontraktowcy}">
+                            <p:column headerText="Nazwa typu z RFP">
+                                <h:outputText id="kontraktowcyColumn" value="#{typKosztu.nazwa}" style="font-size:12px;" title="#{typKosztu.ktoPrzypisany}"/>
+                                <p:draggable for="kontraktowcyColumn" revert="true" helper="clone"/>
+                            </p:column>
+                        </p:dataTable>
+                    </p:outputPanel>
+                </p:fieldset>
+
+                <p:droppable for="kontraktowcy" tolerance="touch" activeStyleClass="ui-state-highlight" datasource="typyKosztowDoPrzydzieleniaTable">
+                    <p:ajax listener="#{parsujArkusz.onKontraktowcyDrop}" update="dropAreaKontraktowcy typyKosztowDoPrzydzieleniaTable wynik suma rok" />
+                </p:droppable>
+                <!--p:droppable for="kontraktowcy" tolerance="touch" activeStyleClass="ui-state-highlight" datasource="etatIdzieloTable">
+                    <p:ajax listener="#{parsujArkusz.onKontraktowcyFromEtatDrop}" update="dropAreaKontraktowcy dropAreaEtatIdzielo wynik" />
+                </p:droppable>
+                <p:droppable for="kontraktowcy" tolerance="touch" activeStyleClass="ui-state-highlight" datasource="zewnetrzniTable">
+                    <p:ajax listener="#{parsujArkusz.onKontraktowcyFromZewnetrzniDrop}" update="dropAreaKontraktowcy dropAreaZewnetrzni wynik" />
+                </p:droppable-->
+
+                <p:fieldset id="zewnetrzni" legend="Pracownicy zewnetrzni" style="margin-top:20px" rendered="#{parsujArkusz.nazwaPliku != null}">
+                    <p:outputPanel id="dropAreaZewnetrzni">
+                        <h:outputText value="Opusc tutaj typy kosztow obejmujacych pracownikow zewnetrznych" rendered="#{empty parsujArkusz.zewnetrzni}" />
+                        <p:dataTable id="zewnetrzniTable" var="typKosztu" value="#{parsujArkusz.zewnetrzni}" rendered="#{not empty parsujArkusz.zewnetrzni}">
+                            <p:column headerText="Nazwa typu z RFP">
+                                <h:outputText id="zewnetrzniColumn" value="#{typKosztu.nazwa}" style="font-size:12px;" title="#{typKosztu.ktoPrzypisany}" />
+                                <p:draggable for="zewnetrzniColumn" revert="true" helper="clone"/>
+                            </p:column>
+                        </p:dataTable>
+                    </p:outputPanel>
+                </p:fieldset>
+
+                <p:droppable for="zewnetrzni" tolerance="touch" activeStyleClass="ui-state-highlight" datasource="typyKosztowDoPrzydzieleniaTable">
+                    <p:ajax listener="#{parsujArkusz.onZewnetrzniDrop}" update="dropAreaZewnetrzni typyKosztowDoPrzydzieleniaTable wynik suma rok" />
+                </p:droppable>
+                <!--p:droppable for="zewnetrzni" tolerance="touch" activeStyleClass="ui-state-highlight" datasource="kontraktowcyTable">
+                    <p:ajax listener="#{parsujArkusz.onZewnetrzniFromKontraktowcyDrop}" update="dropAreaZewnetrzni dropAreaKontraktowcy wynik" />
+                </p:droppable>
+                <p:droppable for="zewnetrzni" tolerance="touch" activeStyleClass="ui-state-highlight" datasource="etatIdzieloTable">
+                    <p:ajax listener="#{parsujArkusz.onZewnetrzniFromEtatDrop}" update="dropAreaZewnetrzni dropAreaEtatIdzielo wynik" />
+                </p:droppable-->
+
+                <p:fieldset id="nieosobowe" legend="Nieosobowe" style="margin-top:20px" rendered="#{parsujArkusz.nazwaPliku != null}">
+                    <p:outputPanel id="dropAreaNieosobowe">
+                        <h:outputText value="Opusc tutaj typy kosztow nieosobowe" rendered="#{empty parsujArkusz.nieosobowe}" />
+                        <p:dataTable id="nieosoboweTable" var="typKosztu" value="#{parsujArkusz.nieosobowe}" rendered="#{not empty parsujArkusz.nieosobowe}">
+                            <p:column headerText="Nazwa typu z RFP">
+                                <h:outputText id="nieosoboweColumn" value="#{typKosztu.nazwa}" style="font-size:12px;" title="#{typKosztu.ktoPrzypisany}" />
+                                <p:draggable for="nieosoboweColumn" revert="true" helper="clone"/>
+                            </p:column>
+                        </p:dataTable>
+                    </p:outputPanel>
+                </p:fieldset>
+
+                <p:droppable for="nieosobowe" tolerance="touch" activeStyleClass="ui-state-highlight" datasource="typyKosztowDoPrzydzieleniaTable">
+                    <p:ajax listener="#{parsujArkusz.onNieosoboweDrop}" update="dropAreaNieosobowe typyKosztowDoPrzydzieleniaTable wynik suma rok" />
+                </p:droppable>
+
+
+                <p:dataTable id="wynik" var="wynik" value="#{parsujArkusz.wyniki}" rendered="#{parsujArkusz.nazwaPliku != null}" emptyMessage="Zmapuj wszystkie typy aby otrzymac wartosci.">
+                    <p:column headerText="Koszty realizacyjne" width="31%">
+                        <h:outputText value="#{wynik.nazwa}" />
+                    </p:column>
+                    <p:column headerText="01">
+                        <h:outputText value="#{wynik.wynik1}" >
+                            <f:convertNumber type="number" minFractionDigits="2" locale="pl_PL"/>
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="02">
+                        <h:outputText value="#{wynik.wynik2}" >
+                            <f:convertNumber type="number" minFractionDigits="2"/>
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="03">
+                        <h:outputText value="#{wynik.wynik3}" >
+                            <f:convertNumber type="number" minFractionDigits="2"/>
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="04">
+                        <h:outputText value="#{wynik.wynik4}" >
+                            <f:convertNumber type="number" minFractionDigits="2"/>
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="05">
+                        <h:outputText value="#{wynik.wynik5}" >
+                            <f:convertNumber type="number" minFractionDigits="2"/>
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="06">
+                        <h:outputText value="#{wynik.wynik6}" >
+                            <f:convertNumber type="number" minFractionDigits="2"/>
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="07">
+                        <h:outputText value="#{wynik.wynik7}" >
+                            <f:convertNumber type="number" minFractionDigits="2"/>
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="08">
+                        <h:outputText value="#{wynik.wynik8}" >
+                            <f:convertNumber type="number" minFractionDigits="2"/>
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="09">
+                        <h:outputText value="#{wynik.wynik9}" >
+                            <f:convertNumber type="number" minFractionDigits="2"/>
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="10">
+                        <h:outputText value="#{wynik.wynik10}" >
+                            <f:convertNumber type="number" minFractionDigits="2"/>
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="11">
+                        <h:outputText value="#{wynik.wynik11}" >
+                            <f:convertNumber type="number" minFractionDigits="2"/>
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="12">
+                        <h:outputText value="#{wynik.wynik12}" >
+                            <f:convertNumber type="number" minFractionDigits="2"/>
+                        </h:outputText>
+                    </p:column>
+                </p:dataTable>
+
+                <p:outputPanel id="suma" rendered="#{parsujArkusz.nazwaPliku != null}">
+                    <h:outputLabel for="sum" value="Suma za rok:" style="font-size: 14px;"/>
+                    <h:outputText id="sum" value="#{parsujArkusz.metadane.lacznie}" style="margin-top: 20px; margin-left: 20px; font-size: 14px;">
+                        <f:convertNumber type="number" maxFractionDigits="2"/>
+                    </h:outputText>
+
+                </p:outputPanel>
+                <p:outputPanel id="rok" rendered="#{parsujArkusz.nazwaPliku != null}">
+                    <h:outputLabel for="rok2" value="Rok:" style="font-size: 14px;"/>
+                    <h:outputText id="rok2" value="#{parsujArkusz.metadane.rok}" style="margin-top: 20px; margin-left: 20px; font-size: 14px;"/>
+                </p:outputPanel>
+            </p:outputPanel>
+        </p:panel>
+    </ui:define>
+</ui:composition>
