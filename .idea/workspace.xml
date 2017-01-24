@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2d86366f-5d67-4558-be5a-b0025ad18bc3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pl/olart/pmsuite/util/ParserCSV.java" afterPath="$PROJECT_DIR$/src/main/java/pl/olart/pmsuite/util/ParserCSV.java" />
+    <list default="true" id="2d86366f-5d67-4558-be5a-b0025ad18bc3" name="Default" comment="poprawki3">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/pl/olart/pmsuite/beans/WyliczKosztyProjektowDoSIZ.java" afterPath="$PROJECT_DIR$/src/main/java/pl/olart/pmsuite/beans/WyliczKosztyProjektowDoSIZ.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ManagerTools.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -16,7 +17,7 @@
     <file path="/fragment.java" changelist="2d86366f-5d67-4558-be5a-b0025ad18bc3" time="1473351930759" ignored="false" />
     <file path="/web.xml" changelist="2d86366f-5d67-4558-be5a-b0025ad18bc3" time="1466072350565" ignored="false" />
     <file path="/pom.xml" changelist="2d86366f-5d67-4558-be5a-b0025ad18bc3" time="1466028621941" ignored="false" />
-    <file path="/Dummy.txt" changelist="2d86366f-5d67-4558-be5a-b0025ad18bc3" time="1485029468221" ignored="false" />
+    <file path="/Dummy.txt" changelist="2d86366f-5d67-4558-be5a-b0025ad18bc3" time="1485268437536" ignored="false" />
     <file path="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_faces_jsf_impl_2_1_15.xml" changelist="2d86366f-5d67-4558-be5a-b0025ad18bc3" time="1443461422689" ignored="false" />
     <file path="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_faces_jsf_api_2_1_15.xml" changelist="2d86366f-5d67-4558-be5a-b0025ad18bc3" time="1443461422689" ignored="false" />
     <file path="/a.dummy" changelist="2d86366f-5d67-4558-be5a-b0025ad18bc3" time="1482872687386" ignored="false" />
@@ -81,6 +82,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -115,7 +117,6 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -123,13 +124,14 @@
   <component name="FavoritesManager">
     <favorites_list name="ManagerTools" />
     <favorites_list name="pmsuite" />
+    <favorites_list name="pmsuite2" />
   </component>
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="parsujArkuszCsv.xhtml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/pmsuite/parsujArkuszCsv.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="145" column="20" selection-start="11202" selection-end="11202" vertical-scroll-proportion="0.0">
+            <state line="145" column="20" selection-start="11202" selection-end="11202" vertical-scroll-proportion="-0.65384614">
               <folding />
             </state>
           </provider>
@@ -180,10 +182,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ParserCSV.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ParserCSV.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/pl/olart/pmsuite/util/ParserCSV.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="83" column="60" selection-start="2863" selection-end="2863" vertical-scroll-proportion="0.57236844">
+            <state line="83" column="60" selection-start="2863" selection-end="2863" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WyliczKosztyProjektowDoSIZ.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pl/olart/pmsuite/beans/WyliczKosztyProjektowDoSIZ.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="199" column="1" selection-start="6355" selection-end="6355" vertical-scroll-proportion="0.83360523">
               <folding />
             </state>
           </provider>
@@ -193,15 +204,6 @@
         <entry file="file://$PROJECT_DIR$/src/main/webapp/start.xhtml">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="template.xhtml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/template.xhtml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="74" selection-start="1385" selection-end="1385" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -230,12 +232,10 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/liferay-display.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/liferay-plugin-package.properties" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/liferay-portlet.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/portlet.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/pl/olart/pmsuite/beans/WyliczKosztyProjektowDoSIZ.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/pmsuite/zliczKosztyZProjektowDoSIZ.xhtml" />
         <option value="$PROJECT_DIR$/src/main/java/pl/olart/pmsuite/beans/WyliczKosztyProjektowDoSiz.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/template.xhtml" />
@@ -246,6 +246,8 @@
         <option value="$PROJECT_DIR$/src/main/java/pl/olart/pmsuite/services/RozliczenieService.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/pmsuite/parsujArkuszCsv.xhtml" />
         <option value="$PROJECT_DIR$/src/main/java/pl/olart/pmsuite/util/ParserCSV.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pl/olart/pmsuite/beans/WyliczKosztyProjektowDoSIZ.java" />
+        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
       </list>
     </option>
   </component>
@@ -293,8 +295,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1616" />
-    <option name="height" value="1154" />
+    <option name="width" value="1936" />
+    <option name="height" value="1034" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -329,17 +331,105 @@
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="pmsuite" />
+              <option name="myItemId" value="pmsuite2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="pmsuite" />
+              <option name="myItemId" value="pmsuite2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="pmsuite2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pmsuite2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pmsuite2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pmsuite2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pmsuite2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="pmsuite" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pmsuite2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pmsuite2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pmsuite" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="beans" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pmsuite2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pmsuite2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value=".idea" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -351,15 +441,15 @@
   <component name="PropertiesComponent">
     <property name="project.structure.last.edited" value="Facets" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="68" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="59" />
-    <property name="project.structure.proportion" value="0.15" />
     <property name="OverrideImplement.combined" value="false" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="59" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="Repository.Attach.JavaDocs" value="false" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="59" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
-    <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="59" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="last_opened_file_path" value="D:/ISWK/workspace_ekoinfonet_git" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="60" />
@@ -374,20 +464,20 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="Downloaded.Files.Path" value="D:\Kierownicze\pmsuite\lib" />
     <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="Downloaded.Files.Path" value="D:\Kierownicze\pmsuite\lib" />
     <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="options.lastSelected" value="settings.github" />
-    <property name="project.structure.side.proportion" value="0.3099298" />
     <property name="DefaultHtmlFileTemplate" value="Xhtml" />
+    <property name="project.structure.side.proportion" value="0.3099298" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="dynamic.classpath" value="false" />
     <property name="options.searchVisible" value="true" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="PublishConfig">
     <servers>
@@ -454,6 +544,19 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -480,19 +583,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -702,7 +792,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="1154" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1034" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964823" sideWeight="0.49227798" order="12" side_tool="false" content_ui="tabs" />
@@ -713,20 +803,20 @@
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38971427" sideWeight="0.47865528" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3286432" sideWeight="0.507722" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2697143" sideWeight="0.26947704" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23359074" sideWeight="0.21909548" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3286432" sideWeight="0.48777348" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32839224" sideWeight="0.4855923" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.3257143" sideWeight="0.4076841" order="10" side_tool="false" content_ui="tabs" x="1279" y="922" width="726" height="285" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.3257143" sideWeight="0.4076841" order="10" side_tool="false" content_ui="tabs" x="1279" y="922" width="726" height="285" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23359074" sideWeight="0.21909548" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32914287" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23359074" sideWeight="0.21909548" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.08858058" sideWeight="0.55314285" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26130652" sideWeight="0.4774775" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23359074" sideWeight="0.6713568" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2697143" sideWeight="0.72998935" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23319103" sideWeight="0.7302857" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2697143" sideWeight="0.7267876" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13553895" sideWeight="0.72914284" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -832,20 +922,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/start.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/template.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="74" selection-start="1385" selection-end="1385" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/olart/pmsuite/model/RozliczenieRFPBean.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="23" selection-start="553" selection-end="553" vertical-scroll-proportion="0.0">
@@ -864,17 +940,17 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
-      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorReferencesProvider">
+      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorProvider">
         <state />
       </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="61" selection-start="800" selection-end="800" vertical-scroll-proportion="0.0" />
-      </provider>
-      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorProvider">
+      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorReferencesProvider">
         <state />
       </provider>
       <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleGeneralEditorProvider">
         <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="61" selection-start="800" selection-end="800" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
@@ -919,7 +995,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/pmsuite/parsujArkuszCsv.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="145" column="20" selection-start="11202" selection-end="11202" vertical-scroll-proportion="0.0">
+        <state line="145" column="20" selection-start="11202" selection-end="11202" vertical-scroll-proportion="-0.65384614">
           <folding />
         </state>
       </provider>
@@ -940,7 +1016,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/olart/pmsuite/util/ParserCSV.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="60" selection-start="2863" selection-end="2863" vertical-scroll-proportion="0.57236844">
+        <state line="83" column="60" selection-start="2863" selection-end="2863" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="4" selection-start="4" selection-end="4" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/olart/pmsuite/beans/WyliczKosztyProjektowDoSIZ.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="199" column="1" selection-start="6355" selection-end="6355" vertical-scroll-proportion="0.83360523">
           <folding />
         </state>
       </provider>

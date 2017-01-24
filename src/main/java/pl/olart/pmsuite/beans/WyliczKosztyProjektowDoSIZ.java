@@ -32,6 +32,7 @@ public class WyliczKosztyProjektowDoSIZ implements Serializable {
     private List<TypKosztuBean> etatIdzielo;
     private List<TypKosztuBean> kontraktowcy;
     private List<TypKosztuBean> zewnetrzni;
+    private List<TypKosztuBean> nieosobowe;
     private List<Wynik> wyniki;
     private String nazwaPliku = null;
     private Metadane metadane;
@@ -42,6 +43,7 @@ public class WyliczKosztyProjektowDoSIZ implements Serializable {
         etatIdzielo = new ArrayList<TypKosztuBean>();
         kontraktowcy = new ArrayList<TypKosztuBean>();
         zewnetrzni = new ArrayList<TypKosztuBean>();
+        nieosobowe = new ArrayList<TypKosztuBean>();
         wyniki = new ArrayList<Wynik>();
         metadane = new Metadane();
     }
@@ -53,7 +55,7 @@ public class WyliczKosztyProjektowDoSIZ implements Serializable {
                 nazwaPliku = event.getFile().getFileName();
                 listaPierwotnaZCSV = ParserCSV.parsujCSV(event.getFile().getInputstream());
                 typyKosztow = RozliczenieService.wyodrebnijTypyKosztow(listaPierwotnaZCSV);
-                RozliczenieService.sklasyfikujWstepnieTypyKosztow(typyKosztow, etatIdzielo, kontraktowcy, zewnetrzni);
+                RozliczenieService.sklasyfikujWstepnieTypyKosztow(typyKosztow, etatIdzielo, kontraktowcy, zewnetrzni, null);
                 wyliczWartosci();
                 FacesUtils.addInfoMessage("Przetworzono plik ", nazwaPliku);
 //                System.out.println(typyKosztow);
@@ -129,7 +131,7 @@ public class WyliczKosztyProjektowDoSIZ implements Serializable {
 
     private void wyliczWartosci() {
         if(typyKosztow != null && typyKosztow.size() == 0) {
-            wyniki = RozliczenieService.wyliczWartosci(listaPierwotnaZCSV, etatIdzielo, kontraktowcy, zewnetrzni, metadane);
+            RozliczenieService.wyliczWartosci(wyniki, listaPierwotnaZCSV, etatIdzielo, kontraktowcy, zewnetrzni, nieosobowe, metadane);
         }
     }
 
@@ -138,8 +140,6 @@ public class WyliczKosztyProjektowDoSIZ implements Serializable {
     }
     public List<TypKosztuBean> getEtatIdzielo() {
         Map<String, String> data = new HashMap<String, String>();
-        data.put("id", "qweasdzxc");
-        data.put("name", "rtetre");
         return etatIdzielo;
     }
     public List<TypKosztuBean> getKontraktowcy() {
@@ -168,6 +168,14 @@ public class WyliczKosztyProjektowDoSIZ implements Serializable {
         this.metadane = metadane;
     }
 
+    public List<TypKosztuBean> getNieosobowe() {
+        return nieosobowe;
+    }
+
+    public void setNieosobowe(List<TypKosztuBean> nieosobowe) {
+        this.nieosobowe = nieosobowe;
+    }
+
     private void clearAll() {
         nazwaPliku = null;
         if(typyKosztow != null) {
@@ -181,6 +189,9 @@ public class WyliczKosztyProjektowDoSIZ implements Serializable {
         }
         if(typyKosztow != null) {
             zewnetrzni.clear();
+        }
+        if(nieosobowe != null) {
+            nieosobowe.clear();
         }
         if(wyniki != null) {
             wyniki.clear();
