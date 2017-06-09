@@ -1,0 +1,1 @@
+create table pm_wykonania (id number(9,0) primary key, data_wykonania date, uzytkownik varchar2(100), nazwa_pliku varchar2(100));
