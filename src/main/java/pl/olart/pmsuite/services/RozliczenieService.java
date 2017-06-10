@@ -5,6 +5,8 @@ import pl.olart.pmsuite.model.RozliczenieRFPBean;
 import pl.olart.pmsuite.model.TypKosztuBean;
 import pl.olart.pmsuite.model.Wynik;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.*;
 
 /**
@@ -13,6 +15,9 @@ import java.util.*;
  * Time: 02:17
  */
 public class RozliczenieService {
+
+    @PersistenceContext(unitName = "pmsuite")
+    private EntityManager em;
 
     public static List<TypKosztuBean> wyodrebnijTypyKosztow(List<RozliczenieRFPBean> lista) {
         HashSet<String> listaTypow = new HashSet<String>();
@@ -97,6 +102,8 @@ public class RozliczenieService {
         wyliczWartosci(listaPierwotnaZCSV, zewnetrzni, wynikZewnetrzni, metadane);
         wyliczWartosci(listaPierwotnaZCSV, nieosobowe, wynikNieosobowe, metadane);
         wyliczLacznieOsobowe(wynikLacznieOsobowe, wynikEtat, wynikKontrakt, wynikZewnetrzni);
+
+
     }
 
     private static void wyliczLacznieOsobowe(Wynik wynikLacznieOsobowe, Wynik wynikEtat, Wynik wynikKontrakt, Wynik wynikZewnetrzni) {

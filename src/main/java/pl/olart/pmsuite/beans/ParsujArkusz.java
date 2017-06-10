@@ -154,6 +154,10 @@ public class ParsujArkusz implements Serializable {
         }
     }
 
+    private void handleSaveState() {
+
+    }
+
     public List<TypKosztuBean> getTypyKosztow() {
         return typyKosztow;
     }
