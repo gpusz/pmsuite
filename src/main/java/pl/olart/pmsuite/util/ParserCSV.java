@@ -97,7 +97,7 @@ public class ParserCSV {
 
             file.close();
 
-            System.out.println(input); // check that it's inputted right
+           // System.out.println(input); // check that it's inputted right
 
             // write the new String with the replaced line OVER the same file
             ByteArrayOutputStream out = new ByteArrayOutputStream();

@@ -4,7 +4,10 @@ import pl.olart.pmsuite.model.Metadane;
 import pl.olart.pmsuite.model.RozliczenieRFPBean;
 import pl.olart.pmsuite.model.TypKosztuBean;
 import pl.olart.pmsuite.model.Wynik;
+import pl.olart.pmsuite.util.CommonUtils;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.*;
 
 /**
@@ -129,32 +132,10 @@ public class RozliczenieService {
     }
 
     private static Double getWynikDlaMiesiaca(Wynik wynik, Integer miesiac) {
-        if(miesiac == 0 && wynik.getWynik1() != null) {
-            return wynik.getWynik1();
-        } else if(miesiac == 1 && wynik.getWynik2() != null) {
-            return wynik.getWynik2();
-        }  else if(miesiac == 2 && wynik.getWynik3() != null) {
-            return wynik.getWynik3();
-        } else if(miesiac == 3 && wynik.getWynik4() != null) {
-            return wynik.getWynik4();
-        } else if(miesiac == 4 && wynik.getWynik5() != null) {
-            return wynik.getWynik5();
-        } else if(miesiac == 5 && wynik.getWynik6() != null) {
-            return wynik.getWynik6();
-        } else if(miesiac == 6 && wynik.getWynik7() != null) {
-            return wynik.getWynik7();
-        } else if(miesiac == 7 && wynik.getWynik8() != null) {
-            return wynik.getWynik8();
-        } else if(miesiac == 8 && wynik.getWynik9() != null) {
-            return wynik.getWynik9();
-        } else if(miesiac == 9 && wynik.getWynik10() != null) {
-            return wynik.getWynik10();
-        } else if(miesiac == 10 && wynik.getWynik11() != null) {
-            return wynik.getWynik11();
-        } else if(miesiac == 11 && wynik.getWynik12() != null) {
-            return wynik.getWynik12();
-        }
-        return 0d;
+        Object retobj
+                = CommonUtils.wywolajMetodeBezArgumentowa(wynik, "getWynik" + (miesiac+1));
+
+        return (Double) retobj;
     }
 
     private static String wyliczRok(List<RozliczenieRFPBean> listaPierwotnaZCSV) {
@@ -171,31 +152,7 @@ public class RozliczenieService {
 
     private static void przypiszElementyMapyDoWyniku(Map<Integer, Double> wynikMap, Wynik wynik) {
         for(Map.Entry<Integer, Double> entry : wynikMap.entrySet()) {
-            if(entry.getKey() == 0) {
-                wynik.setWynik1(entry.getValue());
-            } else if(entry.getKey() == 1) {
-                wynik.setWynik2(entry.getValue());
-            }  else if(entry.getKey() == 2) {
-                wynik.setWynik3(entry.getValue());
-            } else if(entry.getKey() == 3) {
-                wynik.setWynik4(entry.getValue());
-            } else if(entry.getKey() == 4) {
-                wynik.setWynik5(entry.getValue());
-            } else if(entry.getKey() == 5) {
-                wynik.setWynik6(entry.getValue());
-            } else if(entry.getKey() == 6) {
-                wynik.setWynik7(entry.getValue());
-            } else if(entry.getKey() == 7) {
-                wynik.setWynik8(entry.getValue());
-            } else if(entry.getKey() == 8) {
-                wynik.setWynik9(entry.getValue());
-            } else if(entry.getKey() == 9) {
-                wynik.setWynik10(entry.getValue());
-            } else if(entry.getKey() == 10) {
-                wynik.setWynik11(entry.getValue());
-            } else if(entry.getKey() == 11) {
-                wynik.setWynik12(entry.getValue());
-            }
+            CommonUtils.wywolajMetodeJednoArgumentowa(wynik, "setWynik" + (entry.getKey()+1), Double.class, entry.getValue());
         }
 
     }

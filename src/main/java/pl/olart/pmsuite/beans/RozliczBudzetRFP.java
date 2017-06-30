@@ -7,6 +7,7 @@ import pl.olart.pmsuite.model.Wynik;
 import pl.olart.pmsuite.services.RozliczenieService;
 import pl.olart.pmsuite.model.RozliczenieRFPBean;
 import pl.olart.pmsuite.model.TypKosztuBean;
+import pl.olart.pmsuite.util.CommonUtils;
 import pl.olart.pmsuite.util.FacesUtils;
 import pl.olart.pmsuite.util.ParserCSV;
 
@@ -14,13 +15,11 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.event.ActionEvent;
-import javax.faces.event.ActionListener;
-import java.io.IOException;
 import java.io.Serializable;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * User: grp
@@ -29,7 +28,7 @@ import java.util.Map;
  */
 @ManagedBean
 @SessionScoped
-public class ParsujArkusz implements Serializable {
+public class RozliczBudzetRFP implements Serializable {
     private List<TypKosztuBean> typyKosztow;
     private List<TypKosztuBean> etatIdzielo;
     private List<TypKosztuBean> kontraktowcy;
@@ -84,12 +83,12 @@ public class ParsujArkusz implements Serializable {
         wyliczWartosci();
     }
 
-//    public void onEtatFromKontraktowcyDrop(DragDropEvent ddEvent) {
-//        TypKosztuBean typKosztu = ((TypKosztuBean) ddEvent.getData());
-//        etatIdzielo.add(typKosztu);
-//        kontraktowcy.remove(typKosztu);
-//        wyliczWartosci();
-//    }
+    public void onEtatFromKontraktowcyDrop(DragDropEvent ddEvent) {
+        TypKosztuBean typKosztu = ((TypKosztuBean) ddEvent.getData());
+        etatIdzielo.add(typKosztu);
+        kontraktowcy.remove(typKosztu);
+        wyliczWartosci();
+    }
 //
 //    public void onEtatFromZewnetrzniDrop(DragDropEvent ddEvent) {
 //        TypKosztuBean typKosztu = ((TypKosztuBean) ddEvent.getData());
@@ -105,12 +104,12 @@ public class ParsujArkusz implements Serializable {
         wyliczWartosci();
     }
 
-//    public void onKontraktowcyFromEtatDrop(DragDropEvent ddEvent) {
-//        TypKosztuBean typKosztu = ((TypKosztuBean) ddEvent.getData());
-//        kontraktowcy.add(typKosztu);
-//        etatIdzielo.remove(typKosztu);
-//        wyliczWartosci();
-//    }
+    public void onKontraktowcyFromEtatDrop(DragDropEvent ddEvent) {
+        TypKosztuBean typKosztu = ((TypKosztuBean) ddEvent.getData());
+        kontraktowcy.add(typKosztu);
+        etatIdzielo.remove(typKosztu);
+        wyliczWartosci();
+    }
 //
 //    public void onKontraktowcyFromZewnetrzniDrop(DragDropEvent ddEvent) {
 //        TypKosztuBean typKosztu = ((TypKosztuBean) ddEvent.getData());
@@ -223,4 +222,43 @@ public class ParsujArkusz implements Serializable {
             wyniki.clear();
         }
     }
+
+    public boolean czyWyswietlacKolumneWTyl(Long miesiac)  {
+        if(miesiac != 1) { //jesli wyswietlane sa poprzednie miesiace to bezwzledu czy obecny miesiac jest pusty, wyswietl go
+            boolean wyswietlacPoprzedniMiesiac = czyWyswietlacKolumneWTyl(miesiac - 1);
+            if(wyswietlacPoprzedniMiesiac) {
+                return true;
+            }
+        }
+
+        return czyWyswietlacKolumne(miesiac);
+    }
+
+
+    public boolean czyWyswietlacKolumneWPrzod(Long miesiac)  {
+        if(miesiac != 12) { //jesli wyswietlane sa nastepne miesiace to bezwzledu czy obecny miesiac jest pusty, wyswietl go
+            boolean czyWyswietlacNastepnyMiesiac = czyWyswietlacKolumneWPrzod(miesiac + 1);
+            if(czyWyswietlacNastepnyMiesiac) {
+                return true;
+            }
+        }
+
+        return czyWyswietlacKolumne(miesiac);
+    }
+
+
+    private boolean czyWyswietlacKolumne(Long miesiac) {
+        for(Wynik w : getWyniki()) {
+            Object retobj
+                    = CommonUtils.wywolajMetodeBezArgumentowa(w, "getWynik" + miesiac);
+
+            Double wyn = (Double) retobj;
+            if (wyn > 0d) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 }

@@ -6,6 +6,8 @@ import java.util.Map;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+import javax.faces.event.ActionListener;
 
 /**
  * User: grp
@@ -16,7 +18,6 @@ import javax.faces.context.FacesContext;
 @SessionScoped
 public class GlobalBean implements Serializable {
     private Integer activeTab = 0;
-    private String changeActiveTab;
 
     public Integer getActiveTab() {
         return activeTab;
@@ -27,9 +28,14 @@ public class GlobalBean implements Serializable {
     }
 
 
-    public void changeActiveTab() {
+    public String parseParameter() {
         Map<String, String> map = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-        String tab = map.get("i");
+        String param = map.get("param213");
+        return param;
+    }
 
+
+    public String asd2() {
+        return "qw";
     }
 }

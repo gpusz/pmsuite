@@ -11,7 +11,7 @@
             <p:panel>
                 <p:outputLabel value="Dzisiaj jest: "/>
                 <p:outputLabel value="#{currentDate}">
-                    <f:convertDateTime pattern="dd-MM-yyyy" type="date" />
+                    <f:convertDateTime pattern="dd-MM-yyyy HH:mm:dd" type="both" />
                 </p:outputLabel>
             </p:panel>
         </h:form>
