@@ -14,9 +14,6 @@
           <root url="file://$MODULE_DIR$/src/main/resources" />
         </sourceRoots>
       </configuration>
-      <facet type="jsf" name="JSF">
-        <configuration />
-      </facet>
     </facet>
     <facet type="jpa" name="JPA">
       <configuration>
