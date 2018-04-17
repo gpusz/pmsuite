@@ -50,8 +50,8 @@ public class RozliczenieService {
         for(TypKosztuBean typBean : nieprzydzieloneCopy) {
             String typ = typBean.getNazwa();
             //reguly
-            if(typ.toLowerCase().contains("kontr".toLowerCase())) {
-                kontraktowcy.add(typBean);
+            if(typ.toLowerCase().contains("zewn".toLowerCase())) {
+                zewnetrzni.add(typBean);
                 nieprzydzielone.remove(typBean);
             } else if(typ.toLowerCase().contains("zus".toLowerCase())) {
                 etatIdzielo.add(typBean);
@@ -59,8 +59,8 @@ public class RozliczenieService {
             } else if(typ.toLowerCase().contains("prac".toLowerCase())) {
                 etatIdzielo.add(typBean);
                 nieprzydzielone.remove(typBean);
-            }  else if(typ.toLowerCase().contains("zewn".toLowerCase())) {
-                zewnetrzni.add(typBean);
+            }  else if(typ.toLowerCase().contains("kontr".toLowerCase())) {
+                kontraktowcy.add(typBean);
                 nieprzydzielone.remove(typBean);
 //            }   else if(typ.toLowerCase().contains("obc".toLowerCase())) {
 //                zewnetrzni.add(typBean);

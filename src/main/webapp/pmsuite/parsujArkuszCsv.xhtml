@@ -9,7 +9,7 @@
 
         <p:panel>
             <p:growl id="messages" showDetail="true" />
-            <p:commandButton actionListener="#{rozliczBudzetRFP.clearActionListener}" value="Dd nowa" update="infoBtnPanel messages przydzielanieTypowKosztowPanel suma rok"/>
+            <p:commandButton actionListener="#{rozliczBudzetRFP.clearActionListener}" value="Od nowa" update="infoBtnPanel messages przydzielanieTypowKosztowPanel suma rok"/>
             <p:fileUpload label="Zaladuj plik"
                           mode="advanced"
                           dragDropSupport="true"
@@ -29,9 +29,9 @@
             <p:outputPanel id="przydzielanieTypowKosztowPanel">
                 <p:spacer height="20px;"/>
 
-                <p:outputPanel>
-                    <h:outputText value="Zmapuj typy kosztow znalezione w pliku na typy z arkusza budzetowego przerzucajac nazwy typow w odpowiednie obszary. " rendered="#{rozliczBudzetRFP.nazwaPliku != null}" style="font-size:18px;" />
-                    <h:outputText value="Aplikacja wstepnie wykonala przypisanie, ktore mozesz zmienic." rendered="#{rozliczBudzetRFP.nazwaPliku != null}" style="font-size:18px;" />
+                <p:outputPanel rendered="#{rozliczBudzetRFP.nazwaPliku != null}">
+                    <h3 style="font-size:14px;">Zmapuj typy kosztow znalezione w pliku na typy z arkusza budzetowego przerzucajac nazwy typow w odpowiednie obszary. </h3>
+                    <p>Aplikacja wstepnie wykonala przypisanie, ktore mozesz zmienic.</p>
                 </p:outputPanel>
                 <p:spacer height="20px;"/>
 
@@ -48,7 +48,7 @@
                             </p:fieldset>
                         </td>
                         <td width="20%" valign="top">
-                            <p:fieldset id="etatIdzielo" legend="Etat i dzielo" style="margin-top:20px" rendered="#{rozliczBudzetRFP.nazwaPliku != null}">
+                            <p:fieldset id="etatIdzielo" legend="Etat i dzielo" rendered="#{rozliczBudzetRFP.nazwaPliku != null}">
                                 <p:outputPanel id="dropAreaEtatIdzielo">
                                     <h:outputText value="Opusc tutaj typy kosztow obejmujacych etat i umowe o dzielo" rendered="#{empty rozliczBudzetRFP.etatIdzielo}" />
                                     <p:dataTable id="etatIdzieloTable" var="typKosztu" value="#{rozliczBudzetRFP.etatIdzielo}" rendered="#{not empty rozliczBudzetRFP.etatIdzielo}">
@@ -71,7 +71,7 @@
                             </p:droppable-->
                         </td>
                         <td width="20%" valign="top">
-                            <p:fieldset id="kontraktowcy" legend="Wspolpracownicy kontraktowi" style="margin-top:20px" rendered="#{rozliczBudzetRFP.nazwaPliku != null}">
+                            <p:fieldset id="kontraktowcy" legend="Wspolpracownicy kontraktowi" rendered="#{rozliczBudzetRFP.nazwaPliku != null}">
                                 <p:outputPanel id="dropAreaKontraktowcy">
                                     <h:outputText value="Opusc tutaj typy kosztow obejmujacych kontraktowcow" rendered="#{empty rozliczBudzetRFP.kontraktowcy}" />
                                     <p:dataTable id="kontraktowcyTable" var="typKosztu" value="#{rozliczBudzetRFP.kontraktowcy}" rendered="#{not empty rozliczBudzetRFP.kontraktowcy}">
@@ -95,7 +95,7 @@
                         </td>
                         <td width="20%" valign="top">
 
-                            <p:fieldset id="zewnetrzni" legend="Pracownicy zewnetrzni" style="margin-top:20px" rendered="#{rozliczBudzetRFP.nazwaPliku != null}">
+                            <p:fieldset id="zewnetrzni" legend="Pracownicy zewnetrzni" rendered="#{rozliczBudzetRFP.nazwaPliku != null}">
                                 <p:outputPanel id="dropAreaZewnetrzni">
                                     <h:outputText value="Opusc tutaj typy kosztow obejmujacych pracownikow zewnetrznych" rendered="#{empty rozliczBudzetRFP.zewnetrzni}" />
                                     <p:dataTable id="zewnetrzniTable" var="typKosztu" value="#{rozliczBudzetRFP.zewnetrzni}" rendered="#{not empty rozliczBudzetRFP.zewnetrzni}">
@@ -119,7 +119,7 @@
                         </td>
                         <td width="20%" valign="top">
 
-                            <p:fieldset id="nieosobowe" legend="Nieosobowe" style="margin-top:20px" rendered="#{rozliczBudzetRFP.nazwaPliku != null}">
+                            <p:fieldset id="nieosobowe" legend="Nieosobowe" rendered="#{rozliczBudzetRFP.nazwaPliku != null}">
                                 <p:outputPanel id="dropAreaNieosobowe">
                                     <h:outputText value="Opusc tutaj typy kosztow nieosobowe" rendered="#{empty rozliczBudzetRFP.nieosobowe}" />
                                     <p:dataTable id="nieosoboweTable" var="typKosztu" value="#{rozliczBudzetRFP.nieosobowe}" rendered="#{not empty rozliczBudzetRFP.nieosobowe}">

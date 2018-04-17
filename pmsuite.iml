@@ -32,9 +32,11 @@
     <orderEntry type="library" name="super-csv-2.4.0" level="project" />
     <orderEntry type="library" name="org.primefaces:primefaces:6.1" level="project" />
     <orderEntry type="library" name="Maven: javax.servlet:jstl:1.1.2" level="project" />
-    <orderEntry type="library" name="Maven: com.sun.faces:jsf-api:2.1.15" level="project" />
-    <orderEntry type="library" name="Maven: com.sun.faces:jsf-impl:2.1.15" level="project" />
-    <orderEntry type="library" name="Maven: org.primefaces:primefaces:6.0" level="project" />
+    <orderEntry type="library" name="Maven: com.sun.faces:jsf-impl:2.2.15" level="project" />
+    <orderEntry type="library" name="Maven: com.sun.faces:jsf-api:2.2.15" level="project" />
+    <orderEntry type="library" name="Maven: org.primefaces:primefaces:6.2" level="project" />
     <orderEntry type="library" name="Maven: org.primefaces.themes:all-themes:1.0.10" level="project" />
+    <orderEntry type="library" name="Maven: oracle:ojdbc6:11.2.0.3" level="project" />
+    <orderEntry type="library" name="Maven: net.sf.supercsv:super-csv:2.4.0" level="project" />
   </component>
 </module>

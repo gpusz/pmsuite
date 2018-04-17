@@ -31,6 +31,7 @@ public class GlobalBean implements Serializable {
     public String parseParameter() {
         Map<String, String> map = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
         String param = map.get("param213");
+        java.beans.SimpleBeanInfo a;
         return param;
     }
 
